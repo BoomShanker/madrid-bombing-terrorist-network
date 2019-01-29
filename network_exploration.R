@@ -69,7 +69,7 @@ ggraph(g, layout = "in_circle") +
   geom_edge_link(aes(alpha = weight)) + 
   geom_node_point()
 
-# Visualize the network in a circular layout
+# Visualize the network in a gird layout
 ggraph(g, layout = "on_grid") + 
   # Map tie transparency to its weight
   geom_edge_link(aes(alpha = weight)) + 
@@ -219,24 +219,45 @@ A
 #####################
 
 
+#############################################
+# Most similar and most dissimilar terrorists
+#############################################
+
+
+#########################
+# Hierarchical clustering
+#########################
+
+############################
+# Interactive vizualizations
+############################
+
+# Load visNetwork
+library(visNetwork)
+
+# Convert from igraph to visNetwork
+data <- toVisNetworkData(g)
+
+# Print the head of the data nodes
+head(data$nodes)
+
+# ... do the same for the edges (ties)
+head(data$edges)
+
+# Visualize the network
+visNetwork(nodes = data$nodes, edges = data$edges)
+
+# See a list of possible layouts
+ls("package:igraph", pattern = "^layout_.")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+visNetwork(nodes = data$nodes, edges = data$edges) %>%
+  # Change the layout to be KK
+  visIgraphLayout(layout = "layout_with_kk") %>%
+  # Change the options to highlight the nearest nodes and ties
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE)
+  
 
 
 
