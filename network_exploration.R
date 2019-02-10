@@ -18,32 +18,32 @@ ties # 243 ties
 
 # Make the network from the data frame ties and print it
 g <- graph_from_data_frame(ties, directed = FALSE, vertices = nodes)
-g
-
-# Make the network from the data frame ties and print it
-g <- graph_from_data_frame(ties, directed = FALSE, vertices = nodes)
-g
-
-# Explore the set of nodes
-
-
-# Print the number of nodes
-V(g)
-
-# Explore the set of ties
-E(g)
-vcount(g)
-
-# Print the number of ties
-ecount(g)
+#g
 
 # Give the name "Madrid network" to the network 
 g$name <- "Madrid network"
-g$name
+#g$name
 
 # Add node attribute id and print the node `id` attribute
 V(g)$id <- seq(1, vcount(g))
 V(g)$id
+
+# Explore the set of nodes
+V(g)
+
+# Print the number of nodes
+
+vcount(g)
+
+# Explore the set of ties
+E(g)
+
+# Print the number of ties
+ecount(g)
+
+
+
+
 
 # Print the tie `weight` attribute
 E(g)$weight
@@ -92,6 +92,7 @@ nodes_with_centrality <- nodes %>%
 nodes_with_centrality
 
 # The ranking leader, Jamal Zougam, was in fact directly involved in the bombings and was one of the first to be arrested.
+
 
 # Find the most strongly connected terrorists of the train bombing network using strength centrality:
 
